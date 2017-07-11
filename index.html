@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="layout-pf layout-pf-fixed">
+
+  <head>
+    <title>hawtio-help</title>
+    <base href='/'></base>
+    <meta charset="UTF8">
+
+    <!-- CSS -->
+    <!-- patternfly -->
+    <link rel="stylesheet" href="node_modules/patternfly/dist/css/patternfly.min.css">
+    <link rel="stylesheet" href="node_modules/patternfly/dist/css/patternfly-additions.min.css">
+    <!-- codemirror -->
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css" />
+    <!-- @hawtio/ui -->
+    <link rel="stylesheet" href="node_modules/@hawtio/ui/dist/hawtio-ui.css" />
+    <!-- @hawtio/forms -->
+    <link rel="stylesheet" href="dist/hawtio-help.css" />
+
+    <!-- JAVASCRIPT -->
+    <!-- jquery -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- patternfly -->
+    <script src="node_modules/patternfly/dist/js/patternfly.min.js"></script>
+    <!-- angular -->
+    <script src="node_modules/angular/angular.js"></script>
+    <!-- angular-sanitize -->
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <!-- angular-route -->
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <!-- angular-file-upload -->
+    <script src="node_modules/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <!-- angular-ui-bootstrap -->
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <!-- lodash -->
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <!-- urijs -->
+    <script src="node_modules/urijs/src/URI.min.js"></script>
+    <!-- js-logger -->
+    <script src="node_modules/js-logger/src/logger.min.js"></script>
+    <!-- clipboard -->
+    <script src="node_modules/clipboard/dist/clipboard.js"></script>
+    <!-- marked -->
+    <script src="node_modules/marked/lib/marked.js"></script>
+    <!-- js-beautify -->
+    <script src="node_modules/js-beautify/js/lib/beautify.js"></script>
+    <script src="node_modules/js-beautify/js/lib/beautify-html.js"></script>
+    <!-- codemirror -->
+    <script src="node_modules/codemirror/lib/codemirror.js"></script>
+    <script src="node_modules/codemirror/addon/edit/closetag.js"></script>
+    <script src="node_modules/codemirror/addon/edit/continuelist.js"></script>
+    <script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="node_modules/codemirror/addon/fold/foldcode.js"></script>
+    <script src="node_modules/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="node_modules/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+    <script src="node_modules/codemirror/mode/xml/xml.js"></script>
+    <script src="node_modules/codemirror/mode/css/css.js"></script>
+    <script src="node_modules/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="node_modules/codemirror/mode/markdown/markdown.js"></script>
+    <script src="node_modules/codemirror/mode/diff/diff.js"></script>
+    <script src="node_modules/codemirror/mode/properties/properties.js"></script>
+    <script src="node_modules/codemirror/mode/clike/clike.js"></script>
+    <script src="node_modules/codemirror/mode/yaml/yaml.js"></script>
+    <!-- @hawtio/core -->
+    <script src="node_modules/@hawtio/core/dist/hawtio-core.js"></script>
+    <!-- @hawtio/core-navigation -->
+    <script src="node_modules/@hawtio/core-navigation/dist/hawtio-core-navigation.js"></script>
+    <!-- @hawtio/template-cache -->
+    <script src="node_modules/@hawtio/template-cache/dist/hawtio-template-cache.js"></script>
+    <!-- @hawtio/utilities -->
+    <script src="node_modules/@hawtio/utilities/dist/hawtio-utilities.js"></script>
+    <!-- @hawtio/ui -->
+    <script src="node_modules/@hawtio/ui/dist/hawtio-ui.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-pf-vertical">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/help">
+          Hawtio Help Test
+        </a>
+      </div>
+      <nav class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right navbar-iconic">
+          <li>
+            <a class="nav-item-iconic" href="/help">
+              <span title="Help" class="fa pficon-help"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </nav>
+
+    <hawtio-vertical-nav></hawtio-vertical-nav>
+
+    <div class="container-fluid container-pf-nav-pf-vertical ng-cloak" 
+        ng-controller="HawtioNav.ViewController">
+      <div ng-include src="viewPartial"></div>
+    </div>
+
+    <!-- add any scripts under dist/ here -->
+    <script src="dist/hawtio-help.js"></script>
+    <script type="text/javascript">
+      // Add some dummy help topics for testing 
+      var module = angular.module("hawtio-help");
+      module.run(['helpRegistry', function (helpRegistry) {
+        helpRegistry.addUserDoc('camel', 'plugins/help/doc/testing/camel.md');
+        helpRegistry.addUserDoc('activemq', 'plugins/help/doc/testing/activemq.md');
+        helpRegistry.addUserDoc('osgi', 'plugins/help/doc/testing/osgi.md');
+      }]);
+    </script>
+  </body>
+</html>

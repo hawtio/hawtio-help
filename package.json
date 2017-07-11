@@ -1,0 +1,52 @@
+{
+  "name": "@hawtio/help",
+  "version": "3.0.0",
+  "main": "dist/hawtio-help.js",
+  "types": "dist/hawtio-help.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "install:dev": "yarn install --flat --prod && yarn install",
+    "test": "gulp build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@hawtio/ui": "^3.0.25"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "event-stream": "^3.1.7",
+    "gulp": "^3.8.10",
+    "gulp-angular-templatecache": "^1.5.0",
+    "gulp-concat": "^2.4.2",
+    "gulp-concat-filenames": "^1.0.0",
+    "gulp-file": "^0.3.0",
+    "gulp-filter": "^3.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-less": "^3.0.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-rename": "^1.0.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-typescript": "^3.0.0",
+    "hawtio-node-backend": "^2.0.5",
+    "js-logger": "^1.0.0",
+    "typescript": "^2.0.0",
+    "underscore.string": "^2.4.0",
+    "urijs": "^1.17.0",
+    "yargs": "^6.0.0"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hawtio/hawtio-help.git"
+  },
+  "resolutions": {
+    "jquery": "2.2.4"
+  }
+}

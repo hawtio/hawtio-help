@@ -1,0 +1,8 @@
+node_modules/
+libs/
+plugins/help/doc/CHANGES.md
+plugins/help/doc/FAQ.md
+plugins/help/doc/testing/
+.idea
+.vscode
+yarn-error.log
