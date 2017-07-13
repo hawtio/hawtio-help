@@ -1,6 +1,6 @@
 {
   "name": "@hawtio/help",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/hawtio-help.js",
   "types": "dist/hawtio-help.d.ts",
   "files": [
