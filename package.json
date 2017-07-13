@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@hawtio/ui": "^3.0.25"
+    "@hawtio/ui": "~3.0.25"
   },
   "devDependencies": {
     "del": "^2.2.0",
@@ -47,6 +47,9 @@
     "url": "https://github.com/hawtio/hawtio-help.git"
   },
   "resolutions": {
-    "jquery": "2.2.4"
+    "jquery": "2.2.4",
+    "@types/jquery": "2.0.48",
+    "datatables.net": "1.10.15",
+    "moment": "2.18.1"
   }
 }
