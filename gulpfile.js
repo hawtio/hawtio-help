@@ -2,14 +2,14 @@ var gulp = require('gulp'),
     eventStream = require('event-stream'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     del = require('del'),
-    file = require('gulp-file'),
     fs = require('fs'),
     path = require('path'),
     uri = require('urijs'),
     s = require('underscore.string'),
     argv = require('yargs').argv,
     logger = require('js-logger'),
-    hawtio = require('hawtio-node-backend');
+    hawtio = require('hawtio-node-backend'),
+    watch = require('gulp-watch');
 
 var plugins = gulpLoadPlugins({});
 
@@ -24,8 +24,7 @@ var config = {
   js: 'hawtio-help.js',
   css: 'hawtio-help.css',
   tsProject: plugins.typescript.createProject('tsconfig.json'),
-  sourceMap: argv.sourcemap,
-  generateDocs: argv.generatedocs
+  sourceMap: argv.sourcemap
 };
 
 gulp.task('clean-defs', function() {
@@ -56,14 +55,6 @@ gulp.task('less', function () {
 });
 
 gulp.task('template', ['tsc'], function() {
-  if (config.generateDocs) {
-    var docs = ['camel', 'activemq', 'osgi'];
-    docs.forEach(function(doc) {
-        file(doc + ".md" , "### " + doc + "\nTest documentation for " + doc)
-        .pipe(gulp.dest(config.testDoc));
-    });
-  }
-
   return gulp.src(config.templates)
     .pipe(plugins.angularTemplatecache({
       filename: 'templates.js',
@@ -86,12 +77,18 @@ gulp.task('clean', ['concat'], function() {
 });
 
 gulp.task('watch-less', function() {
-  gulp.watch(config.less, ['less']);
+  watch(config.less, function() {
+    gulp.start('less');
+  });
 });
 
 gulp.task('watch', ['build', 'watch-less'], function() {
-  gulp.watch(['index.html', 'dist/*.js'], ['reload']);
-  gulp.watch([config.ts, config.templates], ['tsc', 'template', 'concat', 'clean']);
+  watch(['index.html', 'dist/*.js'], function() {
+    gulp.start('reload');
+  });
+  watch(config.ts.concat(config.templates), function() {
+    gulp.start('build');
+  });
 });
 
 gulp.task('connect', ['watch'], function() {
