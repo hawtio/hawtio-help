@@ -84,6 +84,7 @@ var Help;
 var Help;
 (function (Help) {
     var HelpService = (function () {
+        HelpService.$inject = ["$templateCache", "helpRegistry"];
         function HelpService($templateCache, helpRegistry) {
             'ngInject';
             this.$templateCache = $templateCache;
@@ -136,6 +137,7 @@ var Help;
 var Help;
 (function (Help) {
     var HelpController = (function () {
+        HelpController.$inject = ["$location", "$templateCache", "$rootScope", "marked", "helpService"];
         function HelpController($location, $templateCache, $rootScope, marked, helpService) {
             'ngInject';
             this.$location = $location;
@@ -172,6 +174,8 @@ var Help;
 })(Help || (Help = {}));
 var Help;
 (function (Help) {
+    HelpConfig.$inject = ["$routeProvider", "$provide"];
+    HelpRun.$inject = ["helpRegistry", "viewRegistry", "layoutFull", "$templateCache"];
     function HelpConfig($routeProvider, $provide) {
         'ngInject';
         $routeProvider.when('/help', { template: '<help></help>' });
