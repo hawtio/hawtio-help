@@ -1,3 +1,6 @@
+# DEPRECATED
+
+**This project has been moved to [hawtio-core](https://github.com/hawtio/hawtio-core)**
 # hawtio-help
 
 This plugin provides help documentation for hawtio by enabling other plugins to register their associated help documentation.
